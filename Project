@@ -1,0 +1,25 @@
+import pandas as pd 
+import csv
+
+data = pd.read_excel(r"C:\Dataset for python\salesworkload.xlsx") #Read Data into Python
+data.info() #Information of data (Datatype, Number of columns, Data entry)
+
+df = data.rename({'Unnamed: 0' : 'Month-Year', 'Unnamed: 1' : 'Time index', 'Unnamed: 2' : 'Country', 'Unnamed: 3' : 
+                  'Store ID', 'Unnamed: 4' : 'City', 'Unnamed: 5' : 'Dept_ID', 'Unnamed: 6' : 'Dept_Name', 
+                  'Unnamed: 7' : 'Hoursown', 'Unnamed: 8' : 'Hourslease', 'Unnamed: 9' : 'Sales Unit', 
+                  'Unnamed: 10' : 'Turnover', 'Unnamed: 11' : 'Customer', 'Unnamed: 12' : 'Area', 'Unnamed: 13' : 'Opening Hours'}, axis = 1)
+
+df.info() #Information of data (Datatype, Number of columns, Data entry)  
+
+df.isnull().sum() #Check the null value, Here nullvalue present in this dataset
+
+df.drop(['Customer'], axis=1, inplace=True) #Remove a column
+df1 = df.drop(labels=[0,851,1702,2553,3404,4255,5106,5957,6808], axis=0)  #Remove a Row, Because no values are present in these rows
+
+df1.isnull().sum() #Check the null value, Here no nullvalue present in this dataset
+
+duplicate = df1.duplicated()  # Find the duplicate 
+duplicate   #Output shows the False which means No dupicates are here
+sum(duplicate)  #Total number of Duplicates (Here total number of the duplicates is Zero, So we don't need to remove the duplicates)
+
+df1.to_csv('project_007.csv', index=False) 
