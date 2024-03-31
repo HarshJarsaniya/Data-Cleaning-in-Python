@@ -1,7 +1,7 @@
 import pandas as pd 
 import csv
 
-data = pd.read_excel(r"C:\Dataset for python\salesworkload.xlsx") #Read Data into Python
+data = pd.read_excel(r"C:\Users\USER\Desktop\Dataset\Data Cleaning\salesworkload.xlsx") #Read Data into Python
 data.info() #Information of data (Datatype, Number of columns, Data entry)
 
 df = data.rename({'Unnamed: 0' : 'Month-Year', 'Unnamed: 1' : 'Time index', 'Unnamed: 2' : 'Country', 'Unnamed: 3' : 
